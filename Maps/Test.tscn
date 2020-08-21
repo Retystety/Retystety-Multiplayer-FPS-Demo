@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.345098, 0.247059, 0.247059, 1 )
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.368627, 0.372549, 0.788235, 1 )
+
+[node name="Map" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -10, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Spatial"]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/StaticBody"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Box" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Box2" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box2"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box2"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Box3" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box3"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box3"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Box4" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box4"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box4"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Box5" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box5"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box5"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Box6" type="StaticBody" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, -16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Box6"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Box6"]
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
