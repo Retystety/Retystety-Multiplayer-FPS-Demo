@@ -17,47 +17,16 @@ func _ready():
 	add_to_group("update")
 
 func update():
-	rpc_unreliable("set_physics",translation,motion,dir,key)
+	rpc("set_physics",translation,motion,dir,key)
 
 func _physics_process(delta):
-	process_input(dir,jump)
-	process_movment(move,delta)
-
-
-func process_input(dir,jump):
-	
-	if jump:
-		jump = false
-		if is_on_floor():
-			motion.y = Globals.jump_speed
-		
-	self.rotation_degrees.y = dir.y
-	Xaxis.rotation_degrees.x = dir.x
-
-func process_movment(input,delta):
-	input.y = 0
-	input = input.normalized()
-	
-	motion.y += delta * Globals.g
-	
-	var hmotion = motion
-	hmotion.y = 0
-	
-	var target = input
-	target *= Globals.max_speed
-	
-	var a
-	if input.dot(hmotion) > 0:
-		a = Globals.acceleration
-	else:
-		a = Globals.drag
-	
-	hmotion = hmotion.linear_interpolate(target, a * delta)
-	
-	motion.x = hmotion.x
-	motion.z = hmotion.z
-	
-	
-	
+	process_input(dir)
+	motion = Globals.process_movment(move,jump,is_on_floor(),motion,delta)
 	motion = move_and_slide(motion,Vector3(0,1,0))
+
+
+func process_input(dir):
+	
+	self.rotation_degrees.y = dir.y
+	Xaxis.rotation_degrees.x = clamp(dir.x,-Globals.max_elevation,Globals.max_elevation)
 

@@ -19,7 +19,7 @@ puppet func send_info(name):
 		parent.send_info(self,name)
 
 func set_inputs(move,dir,jump,position,key):
-	rpc_unreliable_id(1,"send_inputs",move,dir,jump,position,key)
+	rpc_id(1,"send_inputs",move,dir,jump,position,key)
 
 func reply(use):
 	rpc_id(1,"send_actions",use)

@@ -23,6 +23,7 @@ func _on_HostButton_pressed():
 	visible = false
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(Globals.PORT, 5)
+	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_ZSTD
 	get_tree().network_peer = peer
 	var server = Globals.server_scene.instance()
 	server.name = Globals.manager_name
@@ -32,6 +33,7 @@ func _on_HostButton_pressed():
 func _on_ClientButton_pressed():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client($ClientButton/IP.text, Globals.PORT)
+	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_ZSTD
 	get_tree().network_peer = peer
 	
 
