@@ -22,8 +22,8 @@ func _on_HostButton_pressed():
 	print("Server started")
 	visible = false
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(Globals.PORT, 5)
-	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_ZSTD
+	peer.channel_count = 100
+	peer.create_server(Globals.PORT, 32)
 	get_tree().network_peer = peer
 	var server = Globals.server_scene.instance()
 	server.name = Globals.manager_name
@@ -32,8 +32,8 @@ func _on_HostButton_pressed():
 
 func _on_ClientButton_pressed():
 	var peer = NetworkedMultiplayerENet.new()
+	peer.channel_count = 100
 	peer.create_client($ClientButton/IP.text, Globals.PORT)
-	peer.compression_mode = NetworkedMultiplayerENet.COMPRESS_ZSTD
 	get_tree().network_peer = peer
 	
 
