@@ -17,7 +17,7 @@ func _ready():
 	add_to_group("update")
 
 func update():
-	rpc("set_physics",translation,motion,dir,key)
+	rpc_unreliable("set_physics",translation,motion,dir,key)
 
 func _physics_process(delta):
 	process_input(dir)

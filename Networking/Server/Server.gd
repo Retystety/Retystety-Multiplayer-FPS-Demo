@@ -12,6 +12,7 @@ var names = {}
 var id_form_name = {}
 var server_interface
 
+var players_count = 0
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
@@ -25,6 +26,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	
 	var update_nodes = get_tree().get_nodes_in_group("update")
 	for node in update_nodes:
 		if node.has_method("update"):
@@ -47,6 +49,8 @@ func update(delta):
 
 
 func _player_connected(id):
+	players_count += 1
+	print("Player count: " + str(players_count))
 	
 	print("Player " + str(id) + " connected")
 	var player_interface = Globals.player_interface_scene.instance()
@@ -61,6 +65,9 @@ func _player_connected(id):
 		server_interface.send_to_add_player(id,player)
 
 func _player_disconnected(id):
+	players_count -= 1
+	print("Player count: " + str(players_count)) 
+	  
 	print("Player " + str(id) + " disconnected")
 	remove_player_instance(id)
 	id_form_name.erase(names[id])
@@ -73,13 +80,11 @@ func send_actions(interface,use):
 	pass
 		
 
-func send_inputs(interface,move,dir,jump,position,key):
+func send_inputs(interface,move,dir,jump,key):
 	var id = interfaces[interface]
 	var player = get_node(Globals.player_instance_name + str(id))
 	
 	if player != null:
-	
-		var dist = position - player.translation
 		
 		player.move = move.normalized()
 		player.dir = dir

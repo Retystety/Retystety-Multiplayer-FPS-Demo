@@ -106,3 +106,7 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Spatial/Box6"]
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 1, 0 )
+shadow_enabled = true

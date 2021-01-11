@@ -6,6 +6,9 @@ var my_interface
 var server_interface
 var instance
 
+func _process(delta):
+	get_tree().network_peer.put_packet("tak".to_ascii())
+
 func _ready():
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
@@ -30,8 +33,8 @@ func _server_disconnected():
 	get_parent().visible = true
 	queue_free()
 
-func set_inputs(move,dir,jump,position,key):
-	my_interface.set_inputs(move,dir,jump,position,key)
+func set_inputs(move,dir,jump,key):
+	my_interface.set_inputs(move,dir,jump,key)
 
 
 func pool_info():

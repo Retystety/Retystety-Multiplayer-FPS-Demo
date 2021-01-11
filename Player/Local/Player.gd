@@ -72,7 +72,7 @@ func _physics_process(delta):
 		
 		keys[new_key] = {"delta": delta, "position": translation, "motion": motion}
 	
-		Client.set_inputs(input,local_dir,jump,translation,new_key)
+		Client.set_inputs(input,local_dir,jump,new_key)
 		
 		motion -= speed
 		motion = Globals.process_movment(input,jump,is_on_floor(),motion,delta)
