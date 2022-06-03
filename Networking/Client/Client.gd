@@ -7,7 +7,7 @@ var server_interface
 var instance
 
 func _process(delta):
-	get_tree().network_peer.put_packet("tak".to_ascii())
+	pass
 
 func _ready():
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
