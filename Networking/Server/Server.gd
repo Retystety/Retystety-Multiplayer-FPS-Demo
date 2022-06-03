@@ -26,11 +26,11 @@ func _ready():
 
 
 func _physics_process(delta):
-	
-	var update_nodes = get_tree().get_nodes_in_group("update")
-	for node in update_nodes:
-		if node.has_method("update"):
-			node.update()
+	update(delta)
+	##var update_nodes = get_tree().get_nodes_in_group("update")
+	##for node in update_nodes:
+	##	if node.has_method("update"):
+	##		node.update()
 
 
 var tick_timer = 0
